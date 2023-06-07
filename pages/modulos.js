@@ -35,51 +35,57 @@ export default function Modulos({ modulos }) {
                         id="modulo1"
                     >
                         <h1>Materias</h1>
-                        {
-                            modulos
-                            .filter(modulo => modulo.modulo_id === 1)
-                            .map(modulo =>
-                                (
-                                    <div key={modulo.id_modulo}>
-                                        <h2>{modulo.nombre}</h2>
-                                    </div>
-                                )
-                            )
-                        }
+                        <ul class="list-group">
+                            {
+                                modulos
+                                    .filter(modulo => modulo.modulo_id === 1)
+                                    .map(modulo =>
+                                    (
+                                        <div key={modulo.id_modulo}>
+                                            <li className='list-group-item'>{modulo.nombre}</li>
+                                        </div>
+                                    )
+                                    )
+                            }
+                        </ul>
                     </div>
                     <div
                         className={`tab-pane fade ${activeTab === 'modulo2' ? 'show active' : ''}`}
                         id="modulo2"
                     >
                         <h1>Materias</h1>
-                        {
-                            modulos
-                            .filter(modulo => modulo.modulo_id === 2)
-                            .map(modulo =>
-                                (
-                                    <div key={modulo.id_modulo}>
-                                        <h2>{modulo.nombre}</h2>
-                                    </div>
-                                )
-                            )
-                        }
+                        <ul class="list-group">
+                            {
+                                modulos
+                                    .filter(modulo => modulo.modulo_id === 2)
+                                    .map(modulo =>
+                                    (
+                                        <div key={modulo.id_modulo}>
+                                            <li className='list-group-item'>{modulo.nombre}</li>
+                                        </div>
+                                    )
+                                    )
+                            }
+                        </ul>
                     </div>
                     <div
                         className={`tab-pane fade ${activeTab === 'modulo3' ? 'show active' : ''}`}
                         id="modulo3"
                     >
                         <h1>Materias</h1>
-                        {
-                            modulos
-                            .filter(modulo => modulo.modulo_id === 3)
-                            .map(modulo =>
-                                (
-                                    <div key={modulo.id_modulo}>
-                                        <h2>{modulo.nombre}</h2>
-                                    </div>
-                                )
-                            )
-                        }
+                        <ul class="list-group">
+                            {
+                                modulos
+                                    .filter(modulo => modulo.modulo_id === 3)
+                                    .map(modulo =>
+                                    (
+                                        <div key={modulo.id_modulo}>
+                                            <li className='list-group-item'>{modulo.nombre}</li>
+                                        </div>
+                                    )
+                                    )
+                            }
+                        </ul>
                     </div>
                 </div>
 
