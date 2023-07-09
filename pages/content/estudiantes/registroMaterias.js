@@ -117,7 +117,7 @@ export default function registroMaterias({ materias, modulos }) {
                           <div className="card-footer">
                             <div className="d-flex justify-content-between">
                               <label className="align-self-center text-body-secondary text-card">$ {modulo.precio}</label>
-                              <a href="#" className="btn btn-primary" onClick={() => handleAgregarProducto(modulo.id_modulo, 'modulo')}>Anadir</a>
+                              <button className="btn btn-primary" onClick={() => handleAgregarProducto(modulo.id_modulo, "modulo")}>Anadir</button>
                             </div>
                           </div>
                         </div>
@@ -132,7 +132,7 @@ export default function registroMaterias({ materias, modulos }) {
                     materias.map((materia) => (
                       <div key={materia.id_materias} className="col-md-4 p-3 mx-auto">
                         <div className="card" style={{ width: '18rem' }}>
-                          <img src="/sources/materias-img/" className="card-img-top" alt={`${materia.nombre}`} />
+                          <img src="/sources/materias-img/clase-informatica.webp" className="card-img-top" alt={`${materia.nombre}`} />
                           <div className="card-body">
                             <h5 className="card-title">{materia.nombre}</h5>
                             <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -140,7 +140,7 @@ export default function registroMaterias({ materias, modulos }) {
                           <div className="card-footer">
                             <div className="d-flex justify-content-between">
                               <label className="align-self-center text-body-secondary text-card">$ {materia.precio}</label>
-                              <a href="#" className="btn btn-primary" onClick={() => handleAgregarProducto(materia.id_materias, "Materias")}>Anadir</a>
+                              <button className="btn btn-primary" onClick={() => handleAgregarProducto(materia.id_materias, "Materias")}>Anadir</button>
                             </div>
                           </div>
                         </div>

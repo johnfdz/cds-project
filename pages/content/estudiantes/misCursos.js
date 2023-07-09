@@ -14,7 +14,6 @@ export default function MisCursos({ curso }) {
                                     <h5 className="card-title">{curso.nombre}</h5>
                                     <p className="card-text">{curso.descripcion}</p>
                                 </div>
-
                             </div>
                         </div>
                     ))
@@ -27,8 +26,6 @@ export default function MisCursos({ curso }) {
 export async function getServerSideProps(context) {
     const session = await getSession(context);
     const id = session.user.id
-    console.log(session.user)
-
     const res = await fetch(`${process.env.URL}/api/curso/${id}`,
         {
             method: 'GET',
@@ -37,7 +34,6 @@ export async function getServerSideProps(context) {
             }
         })
     const cursos = await res.json()
-    console.log(cursos)
     return {
         props: {
             curso: cursos.cursos,

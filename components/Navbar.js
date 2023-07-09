@@ -54,7 +54,7 @@ function Navbar() {
                                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                                             </ul>
                                         </li>
-                                        <li className="nav-item dropdown">
+                                        {/* <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Informes
                                             </a>
@@ -64,7 +64,7 @@ function Navbar() {
                                                 <Link className='dropdown-item' href='/content/admin-dashboard/informes/salarios'> Salarios </Link>
                                                 <Link className='dropdown-item' href='/content/admin-dashboard/informes/horariosDocentes'> Horarios </Link>
                                             </ul>
-                                        </li>
+                                        </li> */}
                                     </>
                                 )}
                                 {ses() === 'estudiante' && (
