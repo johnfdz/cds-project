@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
     if(req.method === 'GET') {
         const cursos = await query({
-            query: 'SELECT id_curso, materia_id, estudiante_id, docente_id FROM curso WHERE estudiante_id = ?',
+            query: 'SELECT materia.nombre as nombre, materia.modulo_id as modulo FROM curso inner join users on curso.estudiante_id = users.id inner join materia on curso.materia_id = materia.id_materias WHERE users.id = ?',
             values: [cursoData]
         });
         res.status(200).json({cursos: cursos});

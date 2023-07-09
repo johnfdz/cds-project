@@ -1,14 +1,24 @@
 import Image from 'next/image'
 import { getSession, useSession } from "next-auth/react"
 
-export default function MisCursos() {
+export default function MisCursos({ curso }) {
     return (
-        <main>
+        <main className='row container-fluid'>
             <div className="container ">
-                <div className="text-center">
-                    <h1>Mis Cursos</h1>
-                    <Image className={'img-fluid rounded'} src={'/sources/estudiantes.jpg'} width={'1000'} height={'750'} alt='Universitarios' ></Image>
-                </div>
+                {
+                    curso.map((curso) => (
+                        <div key={curso.materia_id} className="col-md-4 p-3">
+                            <div className="card" style={{ width: '18rem' }}>
+                                <img src={`/sources/materias-img/clase-informatica.webp`} className="card-img-top" alt={curso.nombre} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{curso.nombre}</h5>
+                                    <p className="card-text">{curso.descripcion}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </main>
     )

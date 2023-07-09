@@ -4,9 +4,10 @@ export default async function handler(req, res) {
     if(req.method === 'GET') {
         const { id_usuario } = req.body;
         const cursos = await query({
-            query: 'SELECT * FROM curso WHERE id_usuario = ?',
+            query: 'SELECT materia.nombre as nombre, materia.modulo_id as modulo FROM curso WHERE id_usuario = ? inner join users on curso.id_usuario = users.id inner join materia on curso.materia_id = materia.id_materias',
             values: [id_usuario]
         });
+        console.log(cursos)
         res.status(200).json({cursos: cursos});
     }
     if(req.method === 'DELETE'){

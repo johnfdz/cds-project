@@ -59,10 +59,10 @@ function Navbar() {
                                                 Informes
                                             </a>
                                             <ul className="dropdown-menu">
-                                                <li><a className="dropdown-item" href="#">Calificaciones</a></li>
+                                                <Link className='dropdown-item' href='/content/admin-dashboard/informes/calificaciones'> Calificaciones </Link>
                                                 <li><hr className="dropdown-divider" /></li>
-                                                <li><a className="dropdown-item" href="#">Salario docentes</a></li>
-                                                <li><a className="dropdown-item" href="#">Horarios docentes</a></li>
+                                                <Link className='dropdown-item' href='/content/admin-dashboard/informes/salarios'> Salarios </Link>
+                                                <Link className='dropdown-item' href='/content/admin-dashboard/informes/horariosDocentes'> Horarios </Link>
                                             </ul>
                                         </li>
                                     </>

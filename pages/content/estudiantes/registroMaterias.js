@@ -18,8 +18,8 @@ class Compra {
     console.log('indice', index)
     console.log('Compra', this.productos)
     this.productos.splice(index, 1);
-    // this.subtotal -= producto.precio * cantidad;
-    // this.actualizarTotal();
+    this.subtotal -= producto.precio * cantidad;
+    this.actualizarTotal();
   }
 
   actualizarTotal() {
@@ -30,26 +30,26 @@ class Compra {
 
 export default function registroMaterias({ materias, modulos }) {
   const [compra, setCompra] = useState(new Compra());;
-  const compras = new Compra();
 
   const handleAgregarProducto = (id, type) => {
+    const nuevaCompra = new Compra([...compra.productos]); // Crear una nueva instancia basada en la compra actual
+    console.log(nuevaCompra)
+
     if (type === "modulo") {
       const prod = modulos.find((item) => item.id_modulo == id);
       const producto = new Producto(prod.nombre, prod.precio);
-      compras.agregarProducto(producto, 1);
-      setCompra({ ...compras }); // Actualizar el estado para volver a renderizar
+      nuevaCompra.agregarProducto(producto, 1);
     } else {
-      console.log(id)
       const prod = materias.find((item) => item.id_materias == id);
-      console.log(prod)
       const producto = new Producto(prod.nombre, prod.precio);
-      compras.agregarProducto(producto, 1);
-      setCompra({ ...compras }); // Actualizar el estado para volver a renderizar
+      nuevaCompra.agregarProducto(producto, 1);
     }
+
+    setCompra(nuevaCompra);
   };
 
   const handleEliminarProducto = (index, type) => {
-    compras.eliminarProducto(index, type);
+    compra.eliminarProducto(index, type);
     setCompra({ ...compra }); // Actualizar el estado para volver a renderizar
   };
 
@@ -108,7 +108,7 @@ export default function registroMaterias({ materias, modulos }) {
                   {
                     modulos.map((modulo) => (
                       <div key={modulo.id_modulo} className="col-md-4 p-3 mx-auto">
-                        <div className="card"  style={{ width: '18rem' }}>
+                        <div className="card" style={{ width: '18rem' }}>
                           <img src={`/sources/modulos/${modulo.num_modulo}.webp`} className="card-img-top" alt={modulo.nombre} />
                           <div className="card-body">
                             <h5 className="card-title">{modulo.nombre} {modulo.num_modulo}</h5>
