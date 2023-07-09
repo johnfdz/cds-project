@@ -20,13 +20,8 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await signIn('credentials', { username: username, password: password, redirect: true });
+    await signIn('credentials', { username: username, password: password, redirect: true, callbackUrl: '/content'});
     console.log('Iniciar sesión con:', username, password);
-  };
-
-  const handleLoginGitHub = async (e) => {
-    e.preventDefault();
-    await signIn('github', { redirect: true });
   };
 
   useEffect(() => {
@@ -39,6 +34,7 @@ export default function Login() {
     }
     securePage();
   }, []);
+
   return (
 
     <div className="container-fluid" >
@@ -77,14 +73,6 @@ export default function Login() {
                     onClick={handleLogin}
                   >
                     Ingresar
-                  </button>
-                </div>
-                <div>
-                  <button
-                    className="btn btn-secondary w-50"
-                    onClick={handleLoginGitHub}
-                  >
-                    Github
                   </button>
                 </div>
               </div>

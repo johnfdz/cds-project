@@ -1,5 +1,4 @@
 import NextAuth from 'next-auth/next';
-import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export default NextAuth({
@@ -7,22 +6,30 @@ export default NextAuth({
     pages: {
         signIn: '/login',
         signOut: '/login',
-        error: '/login',
-        verifyRequest: '/login',
+        error: '/noAccessPage',
+        //verifyRequest: '/login',
         newUser: '/registro',
     },
     providers: [
         CredentialsProvider({
             type: 'credentials',
-            credentials: { },
+            credentials: {},
             async authorize(credentials, req) {
                 const { username, password } = credentials
-                const user = { id: "1", name: "johnfdz", email: "jsmith@example.com" }
+                const user = await fetch(`${process.env.URL}/api/users`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                })
+                    .then(res => res.json())
+                    .catch(err => console.log(err))
 
-
-                if (user.name === username) {
+                console.log(user.usuario[0])
+                if (user.message === 'success') {
                     // Any object returned will be saved in `user` property of the JWT
-                    return user
+                    return user.usuario[0]
                 } else {
                     // If you return null then an error will be displayed advising the user to check their details.
                     return null
@@ -31,17 +38,30 @@ export default NextAuth({
                 }
             }
         }),
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET,
-        }),
-
     ],
     session: {
         jwt: true,
     },
     jwt: {
-        secret: 'jnwijnviwjviw',
+        secret: process.env.SECRET_KEY,
     },
-
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role
+                token.username = user.username
+                token.id = user.id
+            }
+            return token
+        },
+        async session({ session, token }) {
+            session.user.id = token.id
+            session.user.username = token.username
+            session.user.role = token.role
+            return session
+        },
+        redirect({ url, baseUrl }) {
+            return url
+        }
+    },
 });

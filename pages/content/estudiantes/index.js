@@ -13,11 +13,12 @@ export default function Home() {
   if (status === 'authenticated') {
     return (
       <>
-        <h1>Home</h1>
+        <h1>estudiantes</h1>
       </>
     )
   }
 
+  
   return (
     <h1>Loading</h1>
   )

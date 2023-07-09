@@ -1,12 +1,12 @@
 import { getSession } from "next-auth/react"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
-import RegistroMaestros from "../components/interfaces/RegistroMaestros"
-import RegistroEstudiantes from "../components/interfaces/RegistroEstudiantes"
+import RegistroMaestros from "../../../components/interfaces/RegistroMaestros"
+import RegistroEstudiantes from "../../../components/interfaces/RegistroEstudiantes"
 
 
 export default function Estudiantes() {
-    const [entidades, setEntidades] = useState('')
+    const [entidades, setEntidades] = useState('Estudiante')
     const router = useRouter()
 
     const handleEntidadesChange = (e) => {
@@ -16,11 +16,8 @@ export default function Estudiantes() {
     const entidad = () => {
         if (entidades === 'Estudiante') {
             return <RegistroEstudiantes />
-        } else if (entidades === 'Profesor') {
+        } else if (entidades === 'Docente') {
             return <RegistroMaestros />
-        }
-        else {
-            return <h1>Seleccione una entidad</h1>
         }
     }
 
@@ -34,6 +31,7 @@ export default function Estudiantes() {
             }
         }
         securePage();
+        entidad();
     }, []);
 
     return (
@@ -44,11 +42,12 @@ export default function Estudiantes() {
                     <div className="row">
                         <div className="col-sm-4">
                             <select className="form-select" value={entidades} onChange={handleEntidadesChange} placeholder="Elija algo">
-                                <option value="">Seleccione una entidad</option>
                                 <option value="Estudiante">Estudiante</option>
-                                <option value="Profesor"> Profesor</option>
+                                <option value="Docente"> Docente</option>
                             </select>
                         </div>
+                    </div>
+                    <div>
                     </div>
                     <div>
                         {
