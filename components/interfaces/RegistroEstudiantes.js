@@ -179,7 +179,7 @@ export default function RegistroEstudiantes() {
                             <div className="input-group mb-3 has-validation">
                                 <span className="input-group-text">Cedula</span>
                                 <input type="text" value={cedula} pattern="[0-9]{10}" maxLength="10"
-                                    className={`form-control`} placeholder="0987654321"
+                                    className={`form-control`}
                                     onChange={handleCedulaChange} required />
                                 <div className="invalid-feedback" id="ced-mss">
                                     La cedula debe tener 10 digitos
@@ -226,7 +226,7 @@ export default function RegistroEstudiantes() {
                         <div className="col-sm">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1">Direccion</span>
-                                <input type="text" placeholder="Calle 1 y Calle 2" pattern="[A-Za-z0-9._%+-]{3,50}"
+                                <input type="text" pattern="[A-Za-z0-9._%+-]{3,50}"
                                     className="form-control" aria-label="Direccion" value={direccion}
                                     aria-describedby="basic-addon1" onChange={handleDireccionChange} required />
                                 <div className="invalid-feedback">
@@ -238,7 +238,7 @@ export default function RegistroEstudiantes() {
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1">Correo</span>
                                 <input type="email" value={email} pattern="[a-zA-Z0-9._%+-]+@ug\.edu\.ec"
-                                    className="form-control" placeholder="user@company.com" aria-label="Correo"
+                                    className="form-control" aria-label="Correo"
                                     aria-describedby="basic-addon1" onChange={handleEmailChange} required />
                                 <div className="invalid-feedback">
                                     Ingrese un correo valido
@@ -248,7 +248,7 @@ export default function RegistroEstudiantes() {
                         <div className="col-sm">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1">Telefono</span>
-                                <input type="tel" placeholder="0987654321" value={telefono} pattern="[0-9]{10}"
+                                <input type="tel" value={telefono} pattern="[0-9]{10}"
                                     className="form-control" aria-label="Telefono"
                                     aria-describedby="basic-addon1" onChange={handleTelefonoChange} required />
                             </div>

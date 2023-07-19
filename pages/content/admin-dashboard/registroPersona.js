@@ -37,21 +37,10 @@ export default function Estudiantes() {
     return (
         <main>
             <div className="container">
-                <h1>Registro</h1>
                 <>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <select className="form-select" value={entidades} onChange={handleEntidadesChange} placeholder="Elija algo">
-                                <option value="Estudiante">Estudiante</option>
-                                <option value="Docente"> Docente</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                    </div>
                     <div>
                         {
-                            entidad()
+                            <RegistroMaestros />
                         }
                     </div>
                 </>
