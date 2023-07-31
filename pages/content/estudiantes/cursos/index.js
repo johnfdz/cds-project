@@ -9,14 +9,15 @@ export default function MisCursos({ curso }) {
                     curso.map((curso) => (
                         <div key={curso.materia_id} className="col-md-4 p-3">
                             <div className="card" style={{ width: '18rem' }}>
-                                <img src={`/sources/materias-img/clase-informatica.webp`} className="card-img-top" alt={curso.nombre} />
+                                <img src={`/sources/materias-img/clase-informatica.webp`} className="card-img-top" alt={curso.materia} />
                                 <div className="card-body">
-                                    <h5 className="card-title">{curso.nombre}</h5>
+                                    <h5 className="card-title">{curso.materia}</h5>
                                     <p className="card-text">{curso.descripcion}</p>
                                 </div>
                             </div>
                         </div>
                     ))
+                    
                 }
             </div>
         </main>

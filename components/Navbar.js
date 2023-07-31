@@ -2,8 +2,7 @@ import Link from 'next/link';
 import style from '@/styles/Navbar.module.css';
 import Image from 'next/image';
 
-import { signOut, useSession, getSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 
 function Navbar() {
@@ -28,7 +27,7 @@ function Navbar() {
                             <>
                                 <li className='nav-item'>
                                     <Link className='nav-link ' href='/content'>
-                                        Home
+                                        Inicio
                                     </Link>
                                 </li>
                                 {ses() === 'admin' && (
@@ -54,7 +53,7 @@ function Navbar() {
                                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                                             </ul>
                                         </li>
-                                        {/* <li className="nav-item dropdown">
+                                        <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Informes
                                             </a>
@@ -62,15 +61,14 @@ function Navbar() {
                                                 <Link className='dropdown-item' href='/content/admin-dashboard/informes/calificaciones'> Calificaciones </Link>
                                                 <li><hr className="dropdown-divider" /></li>
                                                 <Link className='dropdown-item' href='/content/admin-dashboard/informes/salarios'> Salarios </Link>
-                                                <Link className='dropdown-item' href='/content/admin-dashboard/informes/horariosDocentes'> Horarios </Link>
                                             </ul>
-                                        </li> */}
+                                        </li>
                                     </>
                                 )}
                                 {ses() === 'estudiante' && (
                                     <>
                                         <li className='nav-item'>
-                                            <Link className='nav-link' href='/content/estudiantes/misCursos'>
+                                            <Link className='nav-link' href='/content/estudiantes/cursos'>
                                                 Mis cursos
                                             </Link>
                                         </li>
@@ -89,7 +87,7 @@ function Navbar() {
                                     e.preventDefault();
                                     signOut({ callbackUrl: '/auth/login' });
                                 }}>
-                                    Sign Out
+                                    Cerrar sesión
                                 </Link>
                             )}
                         </>
