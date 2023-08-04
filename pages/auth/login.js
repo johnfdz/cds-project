@@ -20,20 +20,9 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await signIn('credentials', { username: username, password: password, redirect: true, callbackUrl: '/content'});
+    await signIn('credentials', { username: username, password: password, redirect: true, callbackUrl: '/content' });
     console.log('Iniciar sesión con:', username, password);
   };
-
-  useEffect(() => {
-    const securePage = async () => {
-      const session = await getSession();
-      console.log(session)
-      if (session) {
-        router.push('/');
-      }
-    }
-    securePage();
-  }, []);
 
   return (
 
@@ -84,6 +73,23 @@ export default function Login() {
 
   );
 };
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/content',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
 
 
 Login.getLayout = function PageLayout(page) {

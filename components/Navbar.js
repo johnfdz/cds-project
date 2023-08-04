@@ -5,11 +5,12 @@ import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
 
 
-function Navbar() {
+export default function Navbar() {
     const { data: session, status } = useSession();
 
     const ses = () => {
         if (session) {
+            console.log(session.user.name)
             return session.user.role;
         }
     }
@@ -82,6 +83,9 @@ function Navbar() {
                             </>
                         </ul>
                         <>
+                            {/* <div className='d-flex'>
+                                Bienvendio {session.user.name}
+                            </div> */}
                             {session && (
                                 <Link className='nav-link d-flex' href='/api/auth/signout' onClick={e => {
                                     e.preventDefault();
@@ -98,4 +102,3 @@ function Navbar() {
     );
 }
 
-export default Navbar;

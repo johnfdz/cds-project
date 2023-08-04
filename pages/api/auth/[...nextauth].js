@@ -51,13 +51,16 @@ export default NextAuth({
                 token.role = user.role
                 token.username = user.username
                 token.id = user.id
+                token.name = user.name
             }
             return token
         },
         async session({ session, token }) {
+            session.user.name = token.name
             session.user.id = token.id
             session.user.username = token.username
             session.user.role = token.role
+            
             return session
         },
         redirect({ url, baseUrl }) {

@@ -13,7 +13,7 @@ export default async function handler(req, res){
         const {username, password} = req.body;
         console.log(username, password)
         const usuarios = await query({  
-            query: 'SELECT id, username, role FROM users WHERE username = ? AND password = ?',
+            query: 'SELECT id, username, role, name FROM users WHERE username = ? AND password = ?',
             values: [username, password]
         });
 

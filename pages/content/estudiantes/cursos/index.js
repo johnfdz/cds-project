@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import { getSession, useSession } from "next-auth/react"
 
-export default function MisCursos({ curso }) {
+export default function MisCursos({ curso, session }) {
+
     return (
         <main className='row container-fluid'>
             <div className="container ">
@@ -12,7 +13,7 @@ export default function MisCursos({ curso }) {
                                 <img src={`/sources/materias-img/clase-informatica.webp`} className="card-img-top" alt={curso.materia} />
                                 <div className="card-body">
                                     <h5 className="card-title">{curso.materia}</h5>
-                                    <p className="card-text">{curso.descripcion}</p>
+                                    <p className="card-text text-truncate">{curso.descripcion}</p>
                                 </div>
                             </div>
                         </div>
@@ -38,6 +39,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             curso: cursos.cursos,
+            session: session
         }
     }
 }
