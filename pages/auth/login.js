@@ -56,13 +56,16 @@ export default function Login() {
                 />
               </div>
               <div className="text-center row gap-3">
-                <div>
+                <div className='col'>
                   <button
-                    className="btn btn-primary w-50 "
+                    className="btn btn-primary"
                     onClick={handleLogin}
                   >
                     Ingresar
                   </button>
+                </div>
+                <div className='col'>
+                  <button className="btn btn-primary" onClick={() => router.push('/auth/registro')}>Registrarse</button>
                 </div>
               </div>
             </form>

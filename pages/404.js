@@ -16,17 +16,17 @@ export default function PageNotFound() {
 
   if (!session) {
     return (
-      <div>
+      <main>
         <h1>Intenta iniciar sesión</h1>
         <Link href={'/auth/login'} className='btn btn-primary'>Iniciar sesión</Link>
-      </div>
+      </main>
     );
   } else {
     return (
-      <div>
+      <main>
         <h1>No tienes acceso a esta página</h1>
         <Link href={'/'} className='btn btn-primary'>Regresar</Link>
-      </div>
+      </main>
     );
   }
 }

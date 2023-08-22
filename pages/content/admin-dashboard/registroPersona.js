@@ -74,11 +74,10 @@ export default function RegistroMaestros({ contrato }) {
                 direccion: direccion,
                 correo: correo,
                 telefono: telefono,
-                tipoContrato: tipoContrato,
+                tipo_contrato: tipoContrato,
             })
         })
-        const json = await res.json()
-        console.log(json)
+        const json = await res.json() // traer la respuesta de la api
         if (!res.ok) throw Error(json.message)
         clearData();
     }
@@ -157,7 +156,7 @@ export default function RegistroMaestros({ contrato }) {
                         <div className="col-sm-4">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1">Tipo de contrato</span>
-                                <select className="form-select" defaultValue={tipoContrato} value={tipoContrato} onChange={handleTipoContrato}
+                                <select className="form-select" value={tipoContrato} onChange={handleTipoContrato}
                                     aria-label="Default select example">
                                     <option value=''>Seleccionar</option>
                                     {

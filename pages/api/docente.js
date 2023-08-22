@@ -18,11 +18,12 @@ export default async function handler(req, res) {
         res.status(200).json({response: {docentes: docentes, message: result.message}});
     }
     if(req.method === 'POST'){
-        const { cedula, nombre, apellido, edad, direccion,email,telefono,nivelEducacion, promedio } = req.body;
-        console.log(cedula, nombre, apellido, edad, direccion,email,telefono,nivelEducacion, promedio)
+        const { cedula, nombre, apellido, edad, direccion,correo,telefono,tipo_contrato } = req.body;
+        console.log(cedula, nombre, apellido, edad, direccion,correo,telefono,tipo_contrato)
+        
         const docentes = await query({
-            query: 'INSERT INTO docente (cedula, nombre, apellido, edad, direccion, correo, telefono, nivel_educacion, promedio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            values: [cedula, nombre, apellido, edad, direccion,email,telefono,nivelEducacion, promedio]
+            query: 'call post_docente(?,?,?,?,?,?,?,?)',
+            values: [cedula, nombre, apellido, edad, direccion,correo,telefono,tipo_contrato]
         });
         const result = docentes.affectedRows === 1 ? { message: 'Docente creado' } : { message: 'Error al crear el docente' };
         res.status(200).json({response: {docentes: docentes, message: result.message}});

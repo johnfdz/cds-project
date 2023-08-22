@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import style from '@/styles/Navbar.module.css';
 import Image from 'next/image';
+import { useState } from 'react';
 
 import { signOut, useSession } from 'next-auth/react';
 
 
-export default function Navbar() {
+export default function Navbar( {nombre}) {
     const { data: session, status } = useSession();
+    const [name, setName] = useState('')
 
     const ses = () => {
         if (session) {
-            console.log(session.user.name)
             return session.user.role;
         }
     }
@@ -80,11 +81,20 @@ export default function Navbar() {
                                         </li>
                                     </>
                                 )}
+                                {ses() === 'docente' && (
+                                    <>
+                                        <li className='nav-item'>
+                                            <Link className='nav-link' href='/content/docentes/misClases'>
+                                                Mis clases
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
                             </>
                         </ul>
                         <>
                             {/* <div className='d-flex'>
-                                Bienvendio {session.user.name}
+                                Bienvendio {name}
                             </div> */}
                             {session && (
                                 <Link className='nav-link d-flex' href='/api/auth/signout' onClick={e => {

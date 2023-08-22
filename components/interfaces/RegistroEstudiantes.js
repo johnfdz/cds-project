@@ -172,7 +172,7 @@ export default function RegistroEstudiantes() {
     return (
         <main>
             <div className="container">
-                <h1>Ficha alumnos</h1>
+                <h1>Registro alumnos</h1>
                 <form className="row needs-validation" noValidate onSubmit={addEstudiante}>
                     <div className="row">
                         <div className="col-sm-4">
@@ -277,7 +277,7 @@ export default function RegistroEstudiantes() {
                     </div>
                     <div className="row">
                         <div className="col-sm-2">
-                            <button className="btn btn-primary" type="submit">Agregar</button>
+                            <button className="btn btn-primary" type="submit">Registrase</button>
                         </div>
                     </div>
                 </form>
